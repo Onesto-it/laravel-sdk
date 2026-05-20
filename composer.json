@@ -1,0 +1,63 @@
+{
+    "name": "onesto-it/laravel-sdk",
+    "description": "SDK Laravel per integrare le API di Onesto.it (fatturazione elettronica, SDI, F24).",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "onesto",
+        "onesto.it",
+        "laravel",
+        "sdk",
+        "fatturazione",
+        "fattura-elettronica",
+        "sdi",
+        "italia"
+    ],
+    "homepage": "https://onesto.it",
+    "support": {
+        "issues": "https://github.com/Onesto-it/laravel-sdk/issues",
+        "source": "https://github.com/Onesto-it/laravel-sdk",
+        "docs": "https://api.onesto.it"
+    },
+    "authors": [
+        {
+            "name": "True Solutions S.r.l.",
+            "homepage": "https://onesto.it"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "illuminate/support": ">=9.0",
+        "illuminate/http": ">=9.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0 || ^9.0",
+        "phpunit/phpunit": "^10.0 || ^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "OnestoIt\\Sdk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OnestoIt\\Sdk\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OnestoIt\\Sdk\\OnestoServiceProvider"
+            ],
+            "aliases": {
+                "Onesto": "OnestoIt\\Sdk\\Facades\\Onesto"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    }
+}
