@@ -98,23 +98,31 @@ Onesto::createInvoiceFromPIVA([
 
 ### Riferimenti Pubblica Amministrazione (CIG, CUP, ordine, determina…)
 
-Per progetti finanziati, appalti pubblici o PNRR puoi passare un oggetto opzionale `pa` con i riferimenti amministrativi. Tutti i campi sono **opzionali**; quelli passati vengono inseriti nei `<DatiOrdineAcquisto>` della FatturaPA al momento dell'invio SDI.
+Per progetti finanziati, appalti pubblici o PNRR puoi passare **due oggetti opzionali**:
+
+- **`pa`** → solo i codici PA (`cig`, `cup`, `cups`).
+- **`ordine`** → riferimenti all'ordine d'acquisto (`numero`, `data`, `impegno`, `determina`, `codice_commessa`). Validi anche fuori dalla PA (es. B2B con ordine d'acquisto interno).
+
+Tutti i campi sono **opzionali**; quelli passati vengono inseriti nei `<DatiOrdineAcquisto>` della FatturaPA al momento dell'invio SDI.
 
 ```php
 Onesto::createInvoiceManually([
     // ... cliente, articoli, scadenze come sopra ...
 
     'pa' => [
-        'cig'             => 'ZF3392A8B7',          // Codice Identificativo Gara
-        'cups'            => [                       // Codici Unico Progetto (più di uno OK)
+        'cig'  => 'ZF3392A8B7',          // Codice Identificativo Gara
+        'cups' => [                       // Codici Unico Progetto (più di uno OK)
             'J53D23000170006',
             'K12C24000050001',
         ],
-        'numero_ordine'   => 'ORD-2025-001',
-        'data_ordine'     => '2025-04-15',
-        'impegno'         => 'IMP-123',              // Impegno di spesa
-        'determina'       => 'DET-456',              // Determina / commessa
-        'codice_commessa' => 'COMM-789',             // Codice commessa / convenzione
+    ],
+
+    'ordine' => [
+        'numero'          => 'ORD-2025-001',
+        'data'            => '2025-04-15',
+        'impegno'         => 'IMP-123',          // Impegno di spesa
+        'determina'       => 'DET-456',          // Determina / commessa
+        'codice_commessa' => 'COMM-789',         // Codice commessa / convenzione
     ],
 ]);
 ```
@@ -128,11 +136,11 @@ Vincoli sui campi:
 | `pa.cig` | 15 | Alfanumerico |
 | `pa.cup` | 15 | Singolo. Per più CUP usa `pa.cups`. |
 | `pa.cups[*]` | 15 | Lista. Prevale su `pa.cup` se entrambi presenti. |
-| `pa.numero_ordine` | 20 | |
-| `pa.data_ordine` | — | Formato `YYYY-MM-DD` |
-| `pa.impegno` | 100 | |
-| `pa.determina` | 100 | |
-| `pa.codice_commessa` | 100 | |
+| `ordine.numero` | 20 | Numero ordine |
+| `ordine.data` | — | Formato `YYYY-MM-DD` |
+| `ordine.impegno` | 100 | Impegno di spesa |
+| `ordine.determina` | 100 | Determina / commessa |
+| `ordine.codice_commessa` | 100 | Codice commessa / convenzione |
 
 ### Senza Facade (dependency injection)
 

@@ -63,9 +63,15 @@ class Onesto
      *   - pa?: array{
      *         cig?: string,             // Codice Identificativo Gara (max 15)
      *         cup?: string,             // CUP singolo (max 15) — usa cups[] per multipli
-     *         cups?: string[],          // Lista CUP (max 15 ciascuno). Prevale su cup.
-     *         numero_ordine?: string,   // max 20
-     *         data_ordine?: string,     // Y-m-d
+     *         cups?: string[]           // Lista CUP (max 15 ciascuno). Prevale su cup.
+     *     }
+     *
+     * **Riferimenti ordine d'acquisto** (opzionali — validi anche fuori PA,
+     * es. B2B). Vanno comunque nei `<DatiOrdineAcquisto>` insieme a CIG/CUP.
+     *
+     *   - ordine?: array{
+     *         numero?: string,          // max 20 — numero ordine
+     *         data?: string,            // Y-m-d — data ordine
      *         impegno?: string,         // max 100 — impegno di spesa
      *         determina?: string,       // max 100 — determina/commessa
      *         codice_commessa?: string  // max 100 — codice commessa/convenzione
@@ -104,9 +110,15 @@ class Onesto
      *   - pa?: array{
      *         cig?: string,             // Codice Identificativo Gara (max 15)
      *         cup?: string,             // CUP singolo (max 15) — usa cups[] per multipli
-     *         cups?: string[],          // Lista CUP (max 15 ciascuno). Prevale su cup.
-     *         numero_ordine?: string,   // max 20
-     *         data_ordine?: string,     // Y-m-d
+     *         cups?: string[]           // Lista CUP (max 15 ciascuno). Prevale su cup.
+     *     }
+     *
+     * **Riferimenti ordine d'acquisto** (opzionali — validi anche fuori PA,
+     * es. B2B). Vanno comunque nei `<DatiOrdineAcquisto>` insieme a CIG/CUP.
+     *
+     *   - ordine?: array{
+     *         numero?: string,          // max 20 — numero ordine
+     *         data?: string,            // Y-m-d — data ordine
      *         impegno?: string,         // max 100 — impegno di spesa
      *         determina?: string,       // max 100 — determina/commessa
      *         codice_commessa?: string  // max 100 — codice commessa/convenzione
